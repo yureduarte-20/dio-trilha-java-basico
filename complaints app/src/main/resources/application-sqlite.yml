@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:sdw2023
+    Username: sdw2023
+    password:
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    show-sql: true
+    open-in-view: false
+  hibernate:
+    hbm2ddl:
+      auto: create-drop
+
+api:
+  security:
+    token:
+      secret: "secret"
