@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,7 @@ public class CategoryController {
     }
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<?> create(@RequestBody @Valid CategoryCreateRequest categoryCreateRequest){
         var category = new Category();
         category.setName(categoryCreateRequest.name());

@@ -3,6 +3,7 @@ spring:
     url: jdbc:h2:mem:sdw2023
     Username: sdw2023
     password:
+
   jpa:
     show-sql: true
     open-in-view: false
@@ -12,15 +13,34 @@ spring:
       hibernate:
         format_sql: true
 
+  security:
+
+    user:
+      name: "yure@gmail.com"
+      password: "12345678"
+      roles: "ADMIN"
 
   h2:
+
     console:
       enabled: true
       path: /h2-console
       settings:
+
         trace: false
         web-allow-others: false
 api:
   security:
     token:
       secret: "secret"
+server:
+
+  servlet:
+    encoding:
+      charset: utf-8
+  error:
+    include-message: always
+    include-binding-errors: always
+    whitelabel:
+      enabled: true
+    include-exception: true

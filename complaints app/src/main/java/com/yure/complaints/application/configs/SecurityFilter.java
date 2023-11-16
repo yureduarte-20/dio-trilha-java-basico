@@ -12,10 +12,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Service;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.security.sasl.AuthenticationException;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 
 @Service
 public class SecurityFilter extends OncePerRequestFilter {
@@ -34,17 +37,16 @@ public class SecurityFilter extends OncePerRequestFilter {
         var token = this.recoverToken(request);
         System.out.println("token " + token);
         if (token != null) {
-            System.out.println("Caiu aqui");
             var subject = this.tokenService.verifyToken(token);
-            try{
+            try {
                 var user = this.userRepository.loadUserByUsername(subject);
                 SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
-            }catch (UsernameNotFoundException e){
-                SecurityContextHolder.getContext().setAuthentication(null);
+            } catch (UsernameNotFoundException e) {
             }
         }
         filterChain.doFilter(request, response);
     }
+
     private String recoverToken(HttpServletRequest request) {
         var header = request.getHeader("Authorization");
         if (header == null) return null;
