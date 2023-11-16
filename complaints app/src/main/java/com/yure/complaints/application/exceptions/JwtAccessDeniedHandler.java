@@ -24,6 +24,7 @@ public class JwtAccessDeniedHandler implements AccessDeniedHandler {
             public int statusCode = HttpServletResponse.SC_FORBIDDEN;
             public String path = request.getContextPath();
             public String message = accessDeniedException.getLocalizedMessage();
+            public String cause = "FORBIDDEN";
         });
         System.out.println(j);
         response.getWriter().write(j);

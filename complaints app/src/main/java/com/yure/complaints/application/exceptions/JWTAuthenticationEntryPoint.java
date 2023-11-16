@@ -33,6 +33,7 @@ public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
             public  int statusCode = HttpServletResponse.SC_UNAUTHORIZED;
             public String path = request.getServletPath();
             public String message = authException.getLocalizedMessage();
+            public String cause = "UNAUTHORIZED";
         });
         response.getWriter().write(j);
         System.out.println("Caiu no entrypoint");

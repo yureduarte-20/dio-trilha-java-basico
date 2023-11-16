@@ -21,6 +21,7 @@ public class User implements UserDetails {
     private String name;
     @Column(unique = true)
     private String email;
+    @Enumerated(EnumType.STRING)
     private Roles role;
     @Column(nullable = false)
     private String password;

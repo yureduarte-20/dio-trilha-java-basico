@@ -53,7 +53,9 @@ public class AuthorizationController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid RegisterRequest req) {
         if (this.userRepository.findByEmail(req.email()).isPresent())
-            return ResponseEntity.unprocessableEntity().body("{\"error\":\"Email já está sendo usado\"}");
+            return ResponseEntity.unprocessableEntity().body(new Object(){
+                public String  message = "Email já cadastrado";
+            });
         var user = new User();
         user.setEmail(req.email());
         user.setName(req.name());

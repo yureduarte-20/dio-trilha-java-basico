@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Complaint {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
