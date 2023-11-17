@@ -1,9 +1,6 @@
-package dio.me.desafiofinal.santander.domain.repository;
+package dio.me.desafiofinal.santander.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity( name = "addresses")
 public class Address {
@@ -11,6 +8,16 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Barber getBarber() {
+        return barber;
+    }
+
+    public void setBarber(Barber barber) {
+        this.barber = barber;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Barber barber;
     public String getStreet() {
         return street;
     }

@@ -1,4 +1,4 @@
-package com.yure.complaints.application.request.CategoryResquest;
+package com.yure.complaints.application.request.category;
 
 
 import com.yure.complaints.domain.models.Category;

@@ -33,8 +33,10 @@ public class Barber {
     @Column( nullable = false, unique = true )
     private String email;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Appointment> appointments;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Address> addresses;
     public String getName() {
         return name;
     }
@@ -70,5 +72,11 @@ public class Barber {
     }
     public void setAppointments(List<Appointment> appointments) {
         this.appointments = appointments;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{ name: %s, phone: %s, email: %s,  appointments: %s}",
+                getName(), getPhone(), getEmail(), getAppointments());
     }
 }

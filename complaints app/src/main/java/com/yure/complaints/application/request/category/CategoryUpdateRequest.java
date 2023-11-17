@@ -1,7 +1,6 @@
-package com.yure.complaints.application.request.CategoryResquest;
+package com.yure.complaints.application.request.category;
 
 import com.yure.complaints.domain.models.Category;
-import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 public record CategoryUpdateRequest (

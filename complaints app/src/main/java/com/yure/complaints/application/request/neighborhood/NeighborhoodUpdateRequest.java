@@ -1,4 +1,4 @@
-package com.yure.complaints.application.request.NeighborhoodRequest;
+package com.yure.complaints.application.request.neighborhood;
 
 import com.yure.complaints.domain.models.Neighborhood;
 import org.hibernate.validator.constraints.Length;

@@ -23,6 +23,7 @@ import java.util.List;
 public class AppointmentControler {
     static final String PATH = "/appointment";
     private AppointmentsService appointmentsService;
+
     private CustomerService customerService;
     private BarberService barberService;
     private ServicesService servicesService;
@@ -47,7 +48,7 @@ public class AppointmentControler {
 
     @PostMapping("")
     ResponseEntity<Appointment> create(@RequestBody @Valid AppointmentRequest appointmentRequest) throws NotFoundException, AlreadyExistsException, GivenDateInvalidException {
-        var barber = this.barberService.findById(appointmentRequest.barberID(), false);
+        var barber = this.barberService.findById(appointmentRequest.barberID());
         var customer = this.customerService.findById(appointmentRequest.custumerID());
         var service = this.servicesService.findById(appointmentRequest.serviceID());
         var appointment = AppointmentRequest.toAppointment(appointmentRequest, barber, service, customer);

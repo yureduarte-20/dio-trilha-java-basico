@@ -16,9 +16,9 @@ spring:
 
   security:
     user:
-      name: "yure@gmail.com"
-      password: "12345678"
-      roles: "ADMIN"
+      name: ${USER_ADMIN_EMAIL:yure@gmail.com}
+      password: ${USER_ADMIN_PASSWORD:12345678}
+      roles: ADMIN
 
 api:
   security:

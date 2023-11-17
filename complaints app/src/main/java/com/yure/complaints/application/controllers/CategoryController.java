@@ -1,13 +1,11 @@
 package com.yure.complaints.application.controllers;
 
 import com.yure.complaints.application.exceptions.EntityNotFoundException;
-import com.yure.complaints.application.request.CategoryResquest.CategoryCreateRequest;
-import com.yure.complaints.application.request.CategoryResquest.CategoryUpdateRequest;
-import com.yure.complaints.application.response.EntityNotFoundResponse;
+import com.yure.complaints.application.request.category.CategoryCreateRequest;
+import com.yure.complaints.application.request.category.CategoryUpdateRequest;
 import com.yure.complaints.domain.models.Category;
 import com.yure.complaints.domain.repositories.CategoryRepository;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -39,7 +37,7 @@ public class CategoryController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    @ResponseStatus(value = HttpStatus.CREATED, reason = "Recurso criado")
+    @ResponseStatus(value = HttpStatus.CREATED)
     ResponseEntity<?> create(@RequestBody @Valid CategoryCreateRequest categoryCreateRequest) {
         var category = new Category();
         category.setName(categoryCreateRequest.name());

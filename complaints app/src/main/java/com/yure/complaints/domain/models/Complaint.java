@@ -19,7 +19,6 @@ public class Complaint {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    private String status;
     @ManyToOne(fetch = FetchType.EAGER)
     private  Neighborhood neighborhood;
 
@@ -27,24 +26,37 @@ public class Complaint {
     private ComplaintStatus complaintStatus = ComplaintStatus.PENDING;
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+    @ManyToOne
+    private Category category;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Complaint(Long id, String description, String status, Neighborhood neighborhood, ComplaintStatus complaintStatus, User user, Category category) {
+    public Long getId() {
+        return id;
+    }
+
+    public Complaint(Long id, String description,  Neighborhood neighborhood, ComplaintStatus complaintStatus, User user, Category category) {
         this.id = id;
         this.description = description;
-        this.status = status;
+
         this.neighborhood = neighborhood;
         this.complaintStatus = complaintStatus;
         this.user = user;
         this.category = category;
     }
 
-    public Complaint(String description, String status, Neighborhood neighborhood, ComplaintStatus complaintStatus, User user, Category category) {
+    public Complaint(String description, Neighborhood neighborhood, ComplaintStatus complaintStatus, User user, Category category) {
         this.description = description;
-        this.status = status;
+
         this.neighborhood = neighborhood;
         this.complaintStatus = complaintStatus;
         this.user = user;
         this.category = category;
+    }
+
+    public Complaint() {
+
     }
 
     public String getDescription() {
@@ -62,13 +74,6 @@ public class Complaint {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Neighborhood getNeighborhood() {
         return neighborhood;
@@ -94,13 +99,5 @@ public class Complaint {
         this.category = category;
     }
 
-    @ManyToOne
-    private Category category;
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public Long getId() {
-        return id;
-    }
 }

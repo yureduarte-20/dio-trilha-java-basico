@@ -5,13 +5,14 @@ import dio.me.desafiofinal.santander.application.services.exceptions.AlreadyExis
 import dio.me.desafiofinal.santander.application.services.exceptions.NotFoundException;
 import dio.me.desafiofinal.santander.domain.model.Address;
 import dio.me.desafiofinal.santander.domain.repository.AddressRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public class AddressRepositoryConcrete implements AddressService {
+@Service
+public class AddressServiceConcrete implements AddressService {
     private AddressRepository addressRepository;
 
-    public AddressRepositoryConcrete(AddressRepository addressRepository) {
+    public AddressServiceConcrete(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 

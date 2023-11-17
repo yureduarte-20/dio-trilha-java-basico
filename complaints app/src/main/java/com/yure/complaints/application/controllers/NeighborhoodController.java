@@ -1,9 +1,8 @@
 package com.yure.complaints.application.controllers;
 
 import com.yure.complaints.application.exceptions.EntityNotFoundException;
-import com.yure.complaints.application.request.NeighborhoodRequest.NeighborhoodUpdateRequest;
-import com.yure.complaints.application.request.NeighborhoodRequest.NeighborhoodCreateRequest;
-import com.yure.complaints.application.response.EntityNotFoundResponse;
+import com.yure.complaints.application.request.neighborhood.NeighborhoodUpdateRequest;
+import com.yure.complaints.application.request.neighborhood.NeighborhoodCreateRequest;
 import com.yure.complaints.domain.models.Neighborhood;
 import com.yure.complaints.domain.repositories.NeighborhoodRepository;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
