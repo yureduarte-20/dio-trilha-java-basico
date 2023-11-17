@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/spring
+    Username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: update # create | validate | update | create | create-drop
+    properties:
+      hibernate:
+        format_sql: true
+
+  security:
+    user:
+      name: "yure@gmail.com"
+      password: "12345678"
+      roles: "ADMIN"
+
+api:
+  security:
+    token:
+      secret: "secret"
+server:
+
+  servlet:
+    encoding:
+      charset: utf-8
+  error:
+    include-message: always
+    include-binding-errors: always
+    whitelabel:
+      enabled: true
+    include-exception: true

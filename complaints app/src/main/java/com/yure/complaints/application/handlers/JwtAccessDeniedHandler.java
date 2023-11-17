@@ -1,7 +1,5 @@
-package com.yure.complaints.application.exceptions;
+package com.yure.complaints.application.handlers;
 
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.swagger.v3.core.util.Json;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +10,6 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 @Component
 public class JwtAccessDeniedHandler implements AccessDeniedHandler {

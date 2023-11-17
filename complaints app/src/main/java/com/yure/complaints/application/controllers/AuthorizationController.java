@@ -60,7 +60,7 @@ public class AuthorizationController {
         user.setEmail(req.email());
         user.setName(req.name());
         user.setPassword(this.encoder.encode(req.password()));
-        user.setRole(Roles.USER);
+        user.setRole(req.role().equals(Roles.ADMIN.toString()) ? Roles.ADMIN : Roles.USER);
         var data = this.userRepository.save(user);
         return ResponseEntity.ok(new Object() {
             public Long id = data.getId();

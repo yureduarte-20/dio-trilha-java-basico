@@ -1,14 +1,14 @@
 package com.yure.complaints.application.request.NeighborhoodRequest;
 
 import com.yure.complaints.domain.models.Neighborhood;
-import org.hibernate.validator.constraints.Length;
+import jakarta.validation.constraints.NotBlank;
 
-public record NeighborhoodPatchRequest(
-        @Length(min = 3)
+public record NeighborhoodCreateRequest(
+        @NotBlank
         String city,
-        String complement
+         String complement
 ) {
-    public static Neighborhood toNeighborhood(NeighborhoodPatchRequest neighborhoodPostRequest){
+    public static Neighborhood toNeighborhood(NeighborhoodCreateRequest neighborhoodPostRequest){
         var n = new Neighborhood();
         n.setCity(neighborhoodPostRequest.city);
         n.setComplement(neighborhoodPostRequest.complement);
